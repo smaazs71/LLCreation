@@ -1,0 +1,401 @@
+[  
+  // Light 24 Wheels Fully Neon Green Metal
+  {
+    "id": "1000000000",
+    "model": "Light 24 Wheels",
+    "price": 1234,
+    "category": "trolley",
+    "type": "fully",
+    "color": "Neon Green",
+    "variant": "metal",
+    "dimension": {
+      "min": "50cm|20in X 50cm|20in",
+      "max": "72cm|28in X 72cm|28in"
+    },
+    "specialization": "front load",
+    "description": "Something about product",
+    "adjustable": true,
+    "images_path": [
+      "/data_center/images/Ap_Furniture_Products/Light/24_Wheels/Fully/Neon/MS/Light_24_Wheels_Fully_Neon_MS_DV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Light/24_Wheels/Fully/Neon/MS/Light_24_Wheels_Fully_Neon_MS_BV.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/Light/24_Wheels/Fully/Light_24_Wheels_Fully_SS_TV.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/Light/24_Wheels/Corners_Light_24_Wheels.jpg",
+      "/data_center/images/Ap_Furniture_Products/Light/Adjustable_Size_Light_MS_Fully.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/Light/Light_Fully_Reduced_MS_TV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Light/Light_Fully_Extended_MS_TV.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/common/Pipe_MS_Fully.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Knob_Fancy_S.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Stopper.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Stopper_Circle_Base.jpg"
+    ],
+    "key_words": ""
+  },
+  // Light 24 Wheels Fully Neon Green Steel
+  {
+    "id": "1000000000",
+    "model": "Light 24 Wheels",
+    "price": 700,
+    "category": "trolley",
+    "type": "fully",
+    "color": "Neon Green",
+    "variant": "steel",
+    "dimension": {
+      "min": "50cm|20in X 50cm|20in",
+      "max": "72cm|28in X 72cm|28in"
+    },
+    "specialization": "front load",
+    "description": "Something about product",
+    "adjustable": true,
+    "images_path": [
+      "/data_center/images/Ap_Furniture_Products/Light/24_Wheels/Fully/Neon/SS/Light_24_Wheels_Fully_Neon_SS_DV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Light/24_Wheels/Fully/Neon/SS/Light_24_Wheels_Fully_Neon_SS_BV.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/Light/24_Wheels/Fully/Light_24_Wheels_Fully_SS_TV.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/Light/24_Wheels/Corners_Light_24_Wheels.jpg",
+      "/data_center/images/Ap_Furniture_Products/Light/Adjustable_Size_Light_SS_Fully.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/Light/Light_Fully_Reduced_MS_TV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Light/Light_Fully_Extended_SS_TV.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/common/Pipe_SS_Fully.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Knob_Fancy_S.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Stopper.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Stopper_Circle_Base.jpg"
+    ],
+    "key_words": ""
+  },
+  // Light 24 Wheels Fully Orange Metal
+  {
+    "id": "1000000000",
+    "model": "Light 24 Wheels",
+    "price": 700,
+    "category": "trolley",
+    "type": "fully",
+    "color": "Orange",
+    "variant": "metal",
+    "dimension": {
+      "min": "50cm|20in X 50cm|20in",
+      "max": "72cm|28in X 72cm|28in"
+    },
+    "specialization": "front load",
+    "description": "Something about product",
+    "adjustable": true,
+    "images_path": [
+      "/data_center/images/Ap_Furniture_Products/Light/24_Wheels/Fully/Orange/MS/Light_24_Wheels_Fully_Orange_MS_DV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Light/24_Wheels/Fully/Orange/MS/Light_24_Wheels_Fully_Orange_MS_BV.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/Light/24_Wheels/Fully/Light_24_Wheels_Fully_SS_TV.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/Light/24_Wheels/Corners_Light_24_Wheels.jpg",
+      "/data_center/images/Ap_Furniture_Products/Light/Adjustable_Size_Light_MS_Fully.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/Light/Light_Fully_Reduced_MS_TV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Light/Light_Fully_Extended_MS_TV.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/common/Pipe_MS_Fully.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Knob_Fancy_S.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Stopper.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Stopper_Circle_Base.jpg"
+    ],
+    "key_words": ""
+  },
+  // Light 24 Wheels Fully Orange Steel
+  {
+    "id": "1000000000",
+    "model": "Light 24 Wheels",
+    "price": 700,
+    "category": "trolley",
+    "type": "fully",
+    "color": "Orange",
+    "variant": "steel",
+    "dimension": {
+      "min": "50cm|20in X 50cm|20in",
+      "max": "72cm|28in X 72cm|28in"
+    },
+    "specialization": "front load",
+    "description": "Something about product",
+    "adjustable": true,
+    "images_path": [
+      "/data_center/images/Ap_Furniture_Products/Light/24_Wheels/Fully/Orange/SS/Light_24_Wheels_Fully_Orange_SS_DV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Light/24_Wheels/Fully/Orange/SS/Light_24_Wheels_Fully_Orange_SS_BV.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/Light/24_Wheels/Fully/Light_24_Wheels_Fully_SS_TV.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/Light/24_Wheels/Corners_Light_24_Wheels.jpg",
+      "/data_center/images/Ap_Furniture_Products/Light/Adjustable_Size_Light_SS_Fully.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/Light/Light_Fully_Reduced_MS_TV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Light/Light_Fully_Extended_SS_TV.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/common/Pipe_SS_Fully.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Knob_Fancy_S.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Stopper.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Stopper_Circle_Base.jpg"
+    ],
+    "key_words": ""
+  },
+  // Light 24 Wheels Semi Neon Green Metal
+  {
+    "id": "1000000000",
+    "model": "Light 24 Wheels",
+    "price": 1234,
+    "category": "trolley",
+    "type": "Semi",
+    "color": "Neon Green",
+    "variant": "metal",
+    "dimension": {
+      "min": "69cm|27in X 40cm|16in",
+      "max": "84cm|33in X 60cm|24in"
+    },
+    "specialization": "front load",
+    "description": "Something about product",
+    "adjustable": true,
+    "images_path": [
+      "/data_center/images/Ap_Furniture_Products/Light/24_Wheels/Semi/Neon/MS/Light_24_Wheels_Semi_Neon_MS_DV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Light/24_Wheels/Semi/Neon/MS/Light_24_Wheels_Semi_Neon_MS_BV.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/Light/24_Wheels/Corners_Light_24_Wheels.jpg",
+      "/data_center/images/Ap_Furniture_Products/Light/Adjustable_Size_Light_MS_Semi.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/common/Pipe_MS_Semi.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Knob_Fancy_S.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Stopper.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Stopper_Circle_Base.jpg"
+    ],
+    "key_words": ""
+  },
+  // Light 24 Wheels Semi Orange Steel
+  {
+    "id": "1000000000",
+    "model": "Light 24 Wheels",
+    "price": 700,
+    "category": "trolley",
+    "type": "Semi",
+    "color": "Orange",
+    "variant": "steel",
+    "dimension": {
+      "min": "69cm|27in X 40cm|16in",
+      "max": "84cm|33in X 60cm|24in"
+    },
+    "specialization": "front load",
+    "description": "Something about product",
+    "adjustable": true,
+    "images_path": [
+      "/data_center/images/Ap_Furniture_Products/Light/24_Wheels/Semi/Orange/SS/Light_24_Wheels_Semi_Orange_SS_DV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Light/24_Wheels/Semi/Orange/SS/Light_24_Wheels_Semi_Orange_SS_BV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Light/24_Wheels/Semi/Orange/SS/Light_24_Wheels_Semi_Orange_SS_BV_2.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/Light/24_Wheels/Corners_Light_24_Wheels.jpg",
+      "/data_center/images/Ap_Furniture_Products/Light/Adjustable_Size_Light_SS_Semi.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/common/Pipe_SS_Semi.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Knob_Fancy_S.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Stopper.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Stopper_Circle_Base.jpg"
+    ],
+    "key_words": ""
+  },
+  // Pro 16 wheels fully black steel
+  {
+    "id": "1000000000",
+    "model": "Pro 16 wheels",
+    "price": 0,
+    "category": "trolley",
+    "type": "fully",
+    "color": "black",
+    "variant": "steel",
+    "dimension": {
+      "min": "50cm|20in X 50cm|20in",
+      "max": "72cm|28in X 72cm|28in"
+    },
+    "specialization": "front load",
+    "description": "Something about product",
+    "adjustable": true,
+    "images_path": [
+      "/data_center/images/Ap_Furniture_Products/Pro/16_Wheel/Fully/SS/Pro_16_Wheels_Fully_Black_SS_DV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Pro/16_Wheel/Fully/SS/Pro_16_Wheels_Fully_Black_SS_BV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Pro/16_Wheel/Fully/SS/Pro_16_Wheels_Fully_Black_SS_AV.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/Pro/Adjustable_Size_Pro_SS_Fully.jpg",
+      "/data_center/images/Ap_Furniture_Products/Pro/Pro_Fully_Reduced_MS_TV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Pro/Pro_Fully_Extended_SS_TV.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/common/Pipe_SS_Fully.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Knob_Straight.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Stopper.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Stopper_Circle_Base.jpg"
+    ],
+    "key_words": ""
+  },
+  // Pro Big wheels Semi blue metal
+  {
+    "id": "1000000000",
+    "model": "Pro Big wheels",
+    "price": 0,
+    "category": "trolley",
+    "type": "Semi",
+    "color": "blue",
+    "variant": "metal",
+    "dimension": {
+      "min": "69cm|27in X 40cm|16in",
+      "max": "84cm|33in X 60cm|24in"
+    },
+    "specialization": "front load",
+    "description": "Something about product",
+    "adjustable": true,
+    "images_path": [
+      "/data_center/images/Ap_Furniture_Products/Pro/Big_Wheels/Semi/Blue/MS/Pro_Big_Wheels_Semi_Blue_MS_DV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Pro/Big_Wheels/Semi/Blue/MS/Pro_Big_Wheels_Semi_Blue_MS_BV.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/Pro/Big_Wheels/Corners_Pro_Big_Wheels_Orange.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/Pro/Adjustable_Size_Pro_SS_Semi.jpg",
+      "/data_center/images/Ap_Furniture_Products/Pro/Pro_Semi_Reduced_SS_TV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Pro/Pro_Semi_Extended_SS_TV.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/common/Big_Wheels_Blue.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Pipe_SS_Semi.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Knob_Straight.jpg"
+    ],
+    "key_words": ""
+  },
+  // Ultimate Stand 6inch fully Black Metal
+  {
+    "id": "1000000000",
+    "model": "Pro 16 wheels 6\"",
+    "price": 0,
+    "category": "stand",
+    "type": "fully",
+    "color": "black",
+    "variant": "metal",
+    "dimension": {
+      "min": "50cm|20in X 50cm|20in",
+      "max": "72cm|28in X 72cm|28in"
+    },
+    "specialization": "front load",
+    "description": "Something about product",
+    "adjustable": true,
+    "images_path": [
+      "/data_center/images/Ap_Furniture_Products/Stand/Ultimate/Stand_6in/Fully/MS/Ultimate_Stand_6in_Fully_MS_DV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Stand/Ultimate/Stand_6in/Fully/MS/Ultimate_Stand_6in_Fully_MS_FV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Stand/Ultimate/Stand_6in/Fully/MS/Ultimate_Stand_6in_Fully_MS_AV.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/Stand/Ultimate/Stand_6in/Ultimate_Stand_6in_Info.jpg",
+      "/data_center/images/Ap_Furniture_Products/Stand/Ultimate/Corners_Ultimate_Stand.jpg",
+      "/data_center/images/Ap_Furniture_Products/Stand/Ultimate/Ultimate_Stand_Fully_Reduced_SS_TV.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/Pro/Pro_Fully_Extended_SS_TV.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/common/Pipe_MS_Fully.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Knob_Straight.jpg"
+    ],
+    "key_words": ""
+  },
+  // Ultimate Stand 6inch semi Black steel
+  {
+    "id": "1000000000",
+    "model": "Pro 16 wheels 6\"",
+    "price": 0,
+    "category": "stand",
+    "type": "semi",
+    "color": "black",
+    "variant": "steel",
+    "dimension": {
+      "min": "69cm|27in X 40cm|16in",
+      "max": "84cm|33in X 60cm|24in"
+    },
+    "specialization": "front load",
+    "description": "Something about product",
+    "adjustable": true,
+    "images_path": [
+      "/data_center/images/Ap_Furniture_Products/Stand/Ultimate/Stand_6in/Semi/SS/Ultimate_Stand_6in_Semi_SS_DV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Stand/Ultimate/Stand_6in/Semi/SS/Ultimate_Stand_6in_Semi_SS_FV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Stand/Ultimate/Stand_6in/Semi/SS/Ultimate_Stand_6in_Semi_SS_AV.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/Stand/Ultimate/Stand_6in/Ultimate_Stand_6in_Info.jpg",
+      "/data_center/images/Ap_Furniture_Products/Stand/Ultimate/Corners_Ultimate_Stand.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/common/Pipe_MS_Semi.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Knob_Straight.jpg"
+    ],
+    "key_words": ""
+  },
+  // Ultimate 32 wheels 11inch fully black steel
+  {
+    "id": "1000000000",
+    "model": "Pro 32 wheels 11\"",
+    "price": 0,
+    "category": "trolley",
+    "type": "fully",
+    "color": "black",
+    "variant": "steel",
+    "dimension": {
+      "min": "50cm|20in X 50cm|20in",
+      "max": "72cm|28in X 72cm|28in"
+    },
+    "specialization": "front load",
+    "description": "Something about product",
+    "adjustable": true,
+    "images_path": [
+      "/data_center/images/Ap_Furniture_Products/Ultimate/32_Wheels/11in/Fully/Black/SS/Ultimate_32_Wheels_11in_Fully_Black_SS_DV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Ultimate/32_Wheels/11in/Fully/Black/SS/Ultimate_32_Wheels_11in_Fully_Black_SS_FV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Ultimate/32_Wheels/11in/Fully/Black/SS/Ultimate_32_Wheels_11in_Fully_Black_SS_AV.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/Ultimate/32_Wheels/11in/Ultimate_32_Wheels_11in_Corner_Neon_FV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Ultimate/32_Wheels/11in/Ultimate_32_Wheels_11in_Info.jpg",
+      "/data_center/images/Ap_Furniture_Products/Ultimate/32_Wheels/Corners_Ultimate_32_Wheels.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/Pro/Adjustable_Size_Pro_SS_Fully.jpg",
+      "/data_center/images/Ap_Furniture_Products/Pro/Pro_Fully_Reduced_MS_TV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Pro/Pro_Fully_Extended_SS_TV.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/common/Pipe_SS_Fully.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Knob_Straight.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Stopper.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Stopper_Circle_Base.jpg"
+    ],
+    "key_words": ""
+  },
+  // Ultimate 32 wheels 11inch Semi Orange steel
+  {
+    "id": "1000000000",
+    "model": "Pro 32 wheels 11\"",
+    "price": 0,
+    "category": "trolley",
+    "type": "semi",
+    "color": "orange",
+    "variant": "steel",
+    "dimension": {
+      "min": "50cm|20in X 50cm|20in",
+      "max": "72cm|28in X 72cm|28in"
+    },
+    "specialization": "front load",
+    "description": "Something about product",
+    "adjustable": true,
+    "images_path": [
+      "/data_center/images/Ap_Furniture_Products/Ultimate/32_Wheels/11in/Semi/Orange/SS/Ultimate_32_Wheels_11in_Semi_Orange_SS_DV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Ultimate/32_Wheels/11in/Semi/Orange/SS/Ultimate_32_Wheels_11in_Semi_Orange_SS_FV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Ultimate/32_Wheels/11in/Semi/Orange/SS/Ultimate_32_Wheels_11in_Semi_Orange_SS_UV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Ultimate/32_Wheels/11in/Semi/Orange/SS/Ultimate_32_Wheels_11in_Semi_Orange_SS_AV.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/Ultimate/32_Wheels/11in/Ultimate_32_Wheels_11in_Corner_Neon_FV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Ultimate/32_Wheels/11in/Ultimate_32_Wheels_11in_Info.jpg",
+      "/data_center/images/Ap_Furniture_Products/Ultimate/32_Wheels/Corners_Ultimate_32_Wheels.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/Pro/Adjustable_Size_Pro_SS_Semi.jpg",
+      "/data_center/images/Ap_Furniture_Products/Pro/Pro_Semi_Reduced_SS_TV.jpg",
+      "/data_center/images/Ap_Furniture_Products/Pro/Pro_Semi_Extended_SS_TV.jpg",
+
+      "/data_center/images/Ap_Furniture_Products/common/Pipe_SS_Semi.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Knob_Straight.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Stopper.jpg",
+      "/data_center/images/Ap_Furniture_Products/common/Stopper_Circle_Base.jpg"
+    ],
+    "key_words": ""
+  }
+]

@@ -7,7 +7,30 @@ const config: Config = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    screens:{
+      sm: '480px',
+      md: '768px',
+      lg: '976px',
+      xl: '1440px'
+    },
     extend: {
+      colors: {
+        textColor: '#1f2937',
+        textBase: 'rgb(107, 114, 128)',
+        textBaseDark: 'rgb(51, 51, 51)',
+        textHeading: 'rgb(31, 41, 55)',
+        catalogueBG: '#f3f4f6',
+        brightRed: 'hsl(12, 88%, 59%)',
+        brightRedLight: 'hsl(12, 88%, 69%)',
+        brightRedSupLight: 'hsl(12, 88%, 95%)',
+        darkBlue: 'hsl(228, 39%, 23%)',
+        darkGrayishBlue: 'hsl(227, 21%, 61%)',
+        veryDarkBlue: 'hsl(223, 12%, 13%)',
+        veryPaleRed: 'hsl(13, 100%, 96%)',
+        veryLightGray: 'hsl(0, 0%, 98%)',
+        brightGreen: '#019376'
+
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
