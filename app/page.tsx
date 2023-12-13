@@ -1,17 +1,13 @@
-import { Catalogue, Hero } from '../components'
+import { Cart, Catalogue, Hero } from "../components";
 
-const HomePage = ({searchParams}: any) => {
-
-  console.log('searchParams in home: ');
-  console.log(searchParams.a);
+const HomePage = ({ searchParams }: any) => {
   return (
     <div>
       <Hero />
       <Catalogue />
+      <Cart />
+    </div>
+  );
+};
 
-    </div>    
-)
-
-}
-
-export default HomePage
+export default HomePage;

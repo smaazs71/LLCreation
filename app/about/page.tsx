@@ -1,9 +1,7 @@
 import React from 'react'
 
-const AboutPage = ({searchParams}: any) => {
+const AboutPage = () => {
 
-  console.log('searchParams in about: ');
-  console.log(searchParams);
 
   return (
     <div>AboutPage</div>

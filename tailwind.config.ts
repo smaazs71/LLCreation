@@ -16,9 +16,12 @@ const config: Config = {
     extend: {
       colors: {
         textColor: '#1f2937',
-        textBase: 'rgb(107, 114, 128)',
-        textBaseDark: 'rgb(51, 51, 51)',
-        textHeading: 'rgb(31, 41, 55)',
+        base: 'rgb(107, 114, 128)',
+        baseDark: 'rgb(51, 51, 51)',
+        heading: 'rgb(31, 41, 55)',
+        accent: 'rgb(0, 159, 127)',
+        accentHover: 'rgb(1, 147, 118)',
+        a: 'rgb(52, 79, 161)',
         catalogueBG: '#f3f4f6',
         brightRed: 'hsl(12, 88%, 59%)',
         brightRedLight: 'hsl(12, 88%, 69%)',

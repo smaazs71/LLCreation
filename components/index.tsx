@@ -7,8 +7,11 @@ import SearchButton from "./SearchButton";
 import Catalogue from "./Catalogue";
 import FilterSideBar from "./FilterSideBar";
 import ProductCard from "./ProductCard";
-// import ProductDetails from "./ProductDetails";
+import ProductDetails from "./ProductDetails";
 import ShowMore from "./ShowMore";
+import CartSideBar from "./CartSideBar";
+import CartButton from "./CartButton";
+import Cart from "./Cart";
 
 export {
    Hero,
@@ -20,7 +23,11 @@ export {
    Catalogue,
    FilterSideBar,
    ProductCard,
-   // ProductDetails,
+   ProductDetails,
    ShowMore,
+   CartButton,
+   CartSideBar,
+   Cart,
+
 
 }
