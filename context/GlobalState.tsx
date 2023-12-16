@@ -17,7 +17,16 @@ const initialState: GlobalContextType = {
         color: "color",
         size: "size",
         price: 250.0,
-        quantity: 2,
+        quantity: 1,
+      },
+      {
+        id: "1000000005",
+        name: "Aaliya Long",
+        sku: "Aaliya Long M Green",
+        size: "M",
+        color: "Green",
+        price: 100,
+        quantity: 1,
       },
       {
         id: "10000001",
@@ -26,7 +35,7 @@ const initialState: GlobalContextType = {
         color: "color",
         size: "size",
         price: 0,
-        quantity: 0,
+        quantity: 9,
       },
       {
         id: "10000002",
@@ -35,7 +44,7 @@ const initialState: GlobalContextType = {
         color: "color",
         size: "size",
         price: 0,
-        quantity: 0,
+        quantity: 5,
       },
       {
         id: "10000003",
@@ -44,7 +53,7 @@ const initialState: GlobalContextType = {
         color: "color",
         size: "size",
         price: 0,
-        quantity: 0,
+        quantity: 3,
       },
       {
         id: "10000004",
@@ -53,30 +62,32 @@ const initialState: GlobalContextType = {
         color: "color",
         size: "size",
         price: 300.0,
-        quantity: 4,
+        quantity: 13,
       },
     ],
-    cartItemsCount: 0,
-    cartItemsTotalPrice: 0,
+    // cartItemsCount: 0,
+    // cartItemsTotalPrice: 0,
   },
+  getTotalAmount: () => 0,
   addProductInCart: ({ id, name, sku, color, size, price, quantity }) => {},
-  updateProductInCart: (id, key, value) => {},
-  updateProductDetailsInCart: (id, payload) => {},
-  deleteProductFromCart: (id) => {},
-  updateProductQuantityFromCart: (id, count) => {},
+  updateProductInCart: (sku, key, value) => {},
+  updateProductDetailsInCart: (sku, payload) => {},
+  deleteProductFromCart: (sku) => {},
+  updateProductQuantityFromCart: (sku, count) => {},
 };
 
 interface GlobalContextType {
   user: userType;
+  getTotalAmount: () => number;
   addProductInCart: (payload: CartProductType) => void;
   updateProductInCart: (
-    id: string,
+    sku: string,
     key: string,
     value: string | number
   ) => void;
-  updateProductDetailsInCart: (id: string, payload: object) => void;
-  updateProductQuantityFromCart: (id: string, count: number) => void;
-  deleteProductFromCart: (id: string) => void;
+  updateProductDetailsInCart: (sku: string, payload: object) => void;
+  updateProductQuantityFromCart: (sku: string, count: number) => void;
+  deleteProductFromCart: (sku: string) => void;
 }
 
 export const GlobalContext = createContext<GlobalContextType>(initialState);
@@ -93,6 +104,21 @@ export const GlobalProvider = ({ children }: Props) => {
   const [user, dispatch] = useReducer(AppReducer, initialState.user);
 
   //Actions
+  function getTotalAmount() {
+    // console.log("getTotalAmount");
+
+    return user.cart.reduce(
+      (partialSum, product) => partialSum + product.price * product.quantity,
+      0
+    );
+    // user.cart.forEach((product) => {
+    //   price += product.price * product.quantity;
+    // });
+    // console.log(price);
+
+    // return price;
+  }
+
   function addProductInCart(cartProduct: CartProductType) {
     dispatch({
       type: "ADD_PRODUCT_IN_CART",
@@ -100,44 +126,45 @@ export const GlobalProvider = ({ children }: Props) => {
     });
   }
 
-  function updateProductDetailsInCart(id: string, payload: object) {
+  function updateProductDetailsInCart(sku: string, payload: object) {
     dispatch({
       type: "UPDATE_PRODUCT_DETAILS_IN_CART",
-      id,
+      sku,
       payload,
     });
   }
 
   function updateProductInCart(
-    id: string,
+    sku: string,
     key: string,
     value: string | number
   ) {
     dispatch({
       type: "UPDATE_PRODUCT_IN_CART",
-      id,
+      sku,
       key,
       value,
     });
   }
 
-  function updateProductQuantityFromCart(id: string, count: number) {
+  function updateProductQuantityFromCart(sku: string, count: number) {
     dispatch({
       type: "UPDATE_PRODUCT_QUANTITY_FROM_CART",
-      id,
+      sku,
       count,
     });
   }
 
-  function deleteProductFromCart(id: string) {
+  function deleteProductFromCart(sku: string) {
     dispatch({
       type: "DELETE_ITEM_FROM_CART",
-      id,
+      sku,
     });
   }
 
   const value = {
     user,
+    getTotalAmount,
     addProductInCart,
     updateProductDetailsInCart,
     updateProductInCart,

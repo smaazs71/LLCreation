@@ -3,6 +3,7 @@ import { CartProductType, userType } from "@/types";
 export interface appReducerActionType {
   type: string;
   id?: string;
+  sku?: string;
   cartProduct?: CartProductType;
   payload?: object;
   count?: number;
@@ -24,7 +25,7 @@ export default (state: userType, action: appReducerActionType) => {
       return {
         ...state,
         cart: state.cart.map((product) =>
-          product.id === action.id
+          product.sku === action.sku
             ? {
                 ...product,
                 quantity: action.count
@@ -38,7 +39,7 @@ export default (state: userType, action: appReducerActionType) => {
       return {
         ...state,
         cart: state.cart.map((product) =>
-          product.id === action.id
+          product.sku === action.sku
             ? { ...product, [action.key || 0]: action.value }
             : product
         ),
@@ -48,14 +49,14 @@ export default (state: userType, action: appReducerActionType) => {
       return {
         ...state,
         cart: state.cart.map((product) =>
-          product.id === action.id ? { ...product, ...action.payload } : product
+          product.sku === action.sku ? { ...product, ...action.payload } : product
         ),
       };
 
     case "DELETE_ITEM_FROM_CART":
       return {
         ...state,
-        cart: state.cart.filter((product) => product.id != action.id),
+        cart: state.cart.filter((product) => product.sku != action.sku),
       };
 
     default:

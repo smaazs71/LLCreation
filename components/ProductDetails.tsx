@@ -1,9 +1,10 @@
 "use client";
 
-import { ProductProps } from "@/types";
+import { useGlobal } from "@/context/GlobalState";
+import { CartProductType, ProductProps } from "@/types";
 import { Dialog, Transition } from "@headlessui/react";
 import Image from "next/image";
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState, MouseEvent } from "react";
 // import { MouseEventHandler } from "react";
 
 interface ProductDetailsProps {
@@ -20,11 +21,28 @@ const ProductDetails = ({
 
   const [scrollLeft, setScrollLeft] = useState(0);
 
-  const [selectedColor, setselectedColor] = useState("color");
-  const [selectedSize, setselectedSize] = useState("size");
-  const [selectedPrice, setselectedPrice] = useState(product.price);
+  const [cartProductData, setCartProductData] = useState<CartProductType>({
+    id: product.id,
+    name: product.name,
+    color: "",
+    price: 0,
+    size: "",
+    sku: "",
+    quantity: 0,
+  });
+
+  const [stocks, setStocks] = useState<number>(-1);
+
+  const [cartIndex, setCartIndex] = useState<number>(-1);
 
   const imagesDivRef = useRef<HTMLDivElement>(null);
+
+  const {
+    user: { cart },
+    addProductInCart,
+    deleteProductFromCart,
+    updateProductQuantityFromCart,
+  } = useGlobal();
 
   const handleScrollX = (value: number) => {
     // scrollLeft = imagesDivRef.current.scrollWidth - imagesDivRef.current.clientWidth
@@ -44,6 +62,67 @@ const ProductDetails = ({
       }
     }, speed);
   };
+
+  const checkPresenceInCart = (sku: string) => {
+    let cartIndexToSet: number = -1;
+    cart.forEach((productInCart, index) => {
+      if (productInCart.sku === sku) {
+        cartIndexToSet = index;
+      }
+    });
+    if (cartIndexToSet !== -1) {
+      setCartProductData((prevState) => ({
+        ...prevState,
+        quantity: cart[cartIndexToSet].quantity,
+      }));
+    }
+    setCartIndex(cartIndexToSet);
+  };
+
+  const deleteProduct = (sku: string) => {
+    setCartIndex(-1);
+    deleteProductFromCart(sku);
+  };
+
+  useEffect(() => {
+    if (product.pricing.length === 1) {
+      setCartProductData({
+        id: product.id,
+        name: product.name,
+        color: product.pricing[0].color,
+        price: product.pricing[0].price,
+        size: product.pricing[0].size,
+        sku: product.pricing[0].sku,
+        quantity: 0,
+      });
+      setStocks(product.pricing[0].stock);
+      return () => {};
+    }
+  }, [product, isOpen]);
+
+  useEffect(() => {
+    console.log("useEffect runnng");
+    console.log(cartIndex);
+
+    if (cartProductData.color !== "" && cartProductData.size !== "") {
+      product.pricing.forEach((product) => {
+        if (
+          product.color.toLowerCase() === cartProductData.color.toLowerCase() &&
+          product.size.toLowerCase() === cartProductData.size.toLowerCase()
+        ) {
+          setCartProductData((prevState) => ({
+            ...prevState,
+            price: product.price,
+            sku: product.sku,
+          }));
+          setStocks(product.stock);
+
+          checkPresenceInCart(product.sku);
+        }
+      });
+    }
+    return () => {};
+  }, [isOpen, cart, cartProductData.color, cartProductData.size]);
 
   return (
     <>
@@ -239,13 +318,16 @@ const ProductDetails = ({
                             </svg>
                           </div>
                         </div>
-                        <div className="mt-3 text-sm leading-7 text-base md:mt-4">
+                        <div className="mt-3 text-sm leading-7 text-body md:mt-4">
                           {product.description}
                         </div>
                         <div className="my-5 flex items-center md:my-10">
                           <span className="flex items-center">
                             <ins className="text-2xl md:text-3xl font-semibold text-accent no-underline">
-                              {selectedPrice}
+                              Rs{" "}
+                              {cartProductData.price !== 0
+                                ? cartProductData.price
+                                : product.price}
                             </ins>
                           </span>
                         </div>
@@ -271,12 +353,25 @@ const ProductDetails = ({
                                     <div className="mb-2 flex w-full space-x-4 rtl:space-x-reverse">
                                       {product.colors.map((color) => (
                                         <div
-                                          onClick={() =>
-                                            setselectedColor(color)
+                                          onClick={
+                                            () =>
+                                              setCartProductData(
+                                                (prevState) => ({
+                                                  ...prevState,
+                                                  color,
+                                                })
+                                              )
+                                            // onVariationClick("color", color)
+
+                                            // setCartProductData({
+                                            //   ...cartProductData,
+                                            //   color: color,
+                                            // })
+                                            // setSelectedColor(color)
                                           }
                                           role="button"
                                           className={`flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border-2 border-transparent p-0.5 ${
-                                            selectedColor === color
+                                            cartProductData.color === color
                                               ? "!border-accent"
                                               : ""
                                           }`}
@@ -289,29 +384,6 @@ const ProductDetails = ({
                                           ></span>
                                         </div>
                                       ))}
-                                      {/* <div
-                                        role="button"
-                                        className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border-2 border-transparent p-0.5 !border-accent"
-                                      >
-                                        <span
-                                          className="h-full w-full rounded-full border border-border-200"
-                                          style={{
-                                            backgroundColor:
-                                              "rgb(206, 31, 106)",
-                                          }}
-                                        ></span>
-                                      </div>
-                                      <div
-                                        role="button"
-                                        className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border-2 border-transparent p-0.5"
-                                      >
-                                        <span
-                                          className="h-full w-full rounded-full border border-border-200"
-                                          style={{
-                                            backgroundColor: "rgb(52, 79, 161)",
-                                          }}
-                                        ></span>
-                                      </div> */}
                                     </div>
                                   </div>
                                   <div className="os-scrollbar os-scrollbar-horizontal os-theme-dark os-scrollbar-handle-interactive os-scrollbar-cornerless os-scrollbar-unusable">
@@ -357,10 +429,24 @@ const ProductDetails = ({
                                     <div className="mb-2 flex w-full space-x-4 rtl:space-x-reverse">
                                       {product.sizes.map((size) => (
                                         <div
-                                          onClick={() => setselectedSize(size)}
+                                          onClick={
+                                            () =>
+                                              setCartProductData(
+                                                (prevState) => ({
+                                                  ...prevState,
+                                                  size,
+                                                })
+                                              )
+                                            // onVariationClick("size", size)
+                                            // setCartProductData({
+                                            //   ...cartProductData,
+                                            //   size: size,
+                                            // })
+                                            // setSelectedSize(size)
+                                          }
                                           role="button"
                                           className={`cursor-pointer whitespace-nowrap rounded border-border-200 px-4 py-3 text-sm transition-colors border ${
-                                            selectedSize === size
+                                            cartProductData.size === size
                                               ? "!border-accent !bg-accent !text-white"
                                               : ""
                                           }`}
@@ -368,30 +454,6 @@ const ProductDetails = ({
                                           {size}
                                         </div>
                                       ))}
-                                      {/* <div
-                                        role="button"
-                                        className="cursor-pointer whitespace-nowrap rounded border-border-200 px-4 py-3 text-sm transition-colors !border-accent !bg-accent !text-white border"
-                                      >
-                                        S
-                                      </div>
-                                      <div
-                                        role="button"
-                                        className="cursor-pointer whitespace-nowrap rounded border-border-200 bg-gray-50 px-4 py-3 text-sm text-heading transition-colors border"
-                                      >
-                                        M
-                                      </div>
-                                      <div
-                                        role="button"
-                                        className="cursor-pointer whitespace-nowrap rounded border-border-200 bg-gray-50 px-4 py-3 text-sm text-heading transition-colors border"
-                                      >
-                                        L
-                                      </div>
-                                      <div
-                                        role="button"
-                                        className="cursor-pointer whitespace-nowrap rounded border-border-200 bg-gray-50 px-4 py-3 text-sm text-heading transition-colors border"
-                                      >
-                                        XL
-                                      </div> */}
                                     </div>
                                   </div>
                                   <div className="os-scrollbar os-scrollbar-horizontal os-theme-dark os-scrollbar-handle-interactive os-scrollbar-cornerless os-scrollbar-unusable">
@@ -420,17 +482,110 @@ const ProductDetails = ({
                         <div className="mt-6 flex flex-col items-center md:mt-6 lg:flex-row">
                           <div className="mb-3 w-full lg:mb-0 lg:max-w-[400px]">
                             <div>
-                              <button
-                                //   disabled=""
-                                className="flex w-full items-center justify-center rounded bg-accent py-4 px-5 text-sm font-light text-light transition-colors duration-300 hover:bg-accent-hover focus:bg-accent-hover focus:outline-0 lg:text-base cursor-not-allowed border border-border-400 !bg-gray-300 !text-body hover:!bg-gray-300"
-                              >
-                                <span>Add To Shopping Cart</span>
-                              </button>
+                              {cartIndex !== -1 ? (
+                                <div className="mb-3 w-full lg:mb-0 lg:max-w-[400px]">
+                                  <div className="overflow-hidden w-full h-14 rounded text-white bg-accent inline-flex justify-between">
+                                    <button
+                                      onClick={() => {
+                                        cart[cartIndex] &&
+                                        cart[cartIndex].quantity === 1
+                                          ? deleteProduct(cart[cartIndex].sku)
+                                          : updateProductQuantityFromCart(
+                                              cart[cartIndex].sku,
+                                              -1
+                                            );
+                                      }}
+                                      className="cursor-pointer p-2 transition-colors duration-200 hover:bg-accentHover focus:outline-0 px-5"
+                                    >
+                                      <span className="sr-only">minus</span>
+                                      <svg
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        className="h-3 w-3 stroke-2.5"
+                                      >
+                                        <path
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                          d="M20 12H4"
+                                        ></path>
+                                      </svg>
+                                    </button>
+                                    <div className="flex flex-1 items-center justify-center px-3 text-sm font-semibold">
+                                      {cart[cartIndex] &&
+                                        cart[cartIndex].quantity}
+                                    </div>
+                                    <button
+                                      disabled={
+                                        cart[cartIndex] &&
+                                        stocks > cart[cartIndex].quantity
+                                          ? false
+                                          : true
+                                      }
+                                      onClick={() => {
+                                        updateProductQuantityFromCart(
+                                          cart[cartIndex].sku,
+                                          +1
+                                        );
+                                      }}
+                                      className={`${
+                                        cart[cartIndex] &&
+                                        stocks > cart[cartIndex].quantity
+                                          ? "cursor-pointer transition-colors duration-200 hover:bg-accentHover"
+                                          : "bg-gray-300 text-textColor cursor-not-allowed hover:bg-gray-300"
+                                      }
+                                        p-2  focus:outline-0 px-5`}
+                                      title=""
+                                    >
+                                      <span className="sr-only">plus</span>
+                                      <svg
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        className="md:w-4.5 h-3.5 w-3.5 stroke-2.5 md:h-4.5"
+                                      >
+                                        <path
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                          d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                                        ></path>
+                                      </svg>
+                                    </button>
+                                  </div>
+                                </div>
+                              ) : (
+                                <button
+                                  onClick={() =>
+                                    addProductInCart({
+                                      ...cartProductData,
+                                      quantity: 1,
+                                    })
+                                  }
+                                  disabled={
+                                    stocks < 1 || cartProductData.sku !== ""
+                                      ? false
+                                      : true
+                                  }
+                                  className={`flex w-full items-center justify-center rounded ${
+                                    stocks < 1 || cartProductData.sku !== ""
+                                      ? "bg-accent text-white hover:bg-accentHover"
+                                      : "bg-gray-300 text-textColor cursor-not-allowed hover:bg-gray-300"
+                                  } py-4 px-5 text-sm font-light transition-colors duration-300 focus:bg-accentHover focus:outline-0 lg:text-base border border-border-400`}
+                                >
+                                  <span>Add To Shopping Cart</span>
+                                </button>
+                              )}
                             </div>
                           </div>
-                          <span className="whitespace-nowrap text-base text-body ltr:lg:ml-7 rtl:lg:mr-7">
-                            500 pieces available
-                          </span>
+                          {stocks > -1 ? (
+                            <span className="whitespace-nowrap text-base text-body lg:ml-7 ">
+                              {stocks === 0
+                                ? "out of stocks"
+                                : `${stocks} pieces available`}
+                            </span>
+                          ) : (
+                            ""
+                          )}
                         </div>
                       </div>
                       <div className="mt-4 flex w-full flex-row items-start border-t border-border-200 border-opacity-60 pt-4 md:mt-6 md:pt-6">

@@ -33,7 +33,7 @@ const Catalogue = ({ searchParams }: any) => {
 
               {filteredProducts?.map((product, i) => {
                 return ((searchParams && searchParams.limit) || 10) > i ? (
-                  <ProductCard product={product} />
+                  <ProductCard key={product.id} product={product} />
                 ) : (
                   ""
                 );

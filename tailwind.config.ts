@@ -16,7 +16,7 @@ const config: Config = {
     extend: {
       colors: {
         textColor: '#1f2937',
-        base: 'rgb(107, 114, 128)',
+        body: 'rgb(107, 114, 128)',
         baseDark: 'rgb(51, 51, 51)',
         heading: 'rgb(31, 41, 55)',
         accent: 'rgb(0, 159, 127)',

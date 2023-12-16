@@ -12,26 +12,23 @@ interface ProductCardProps {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [quantityInCart, setQuantityInCart] = useState<number>(0);
+  const [quantityInCart, setQuantityInCart] = useState<number>(-1);
 
   const {
-    user: { cart, cartItemsCount, cartItemsTotalPrice },
+    user: { cart },
     addProductInCart,
-    updateProductInCart,
-    updateProductDetailsInCart,
     deleteProductFromCart,
     updateProductQuantityFromCart,
   } = useGlobal();
 
-  const addProductToCart = async (
+  const addProductToCart = (
     e: MouseEvent<HTMLButtonElement>,
     product: ProductProps
   ) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log("adding products to cart length of p");
 
-    await addProductInCart({
+    addProductInCart({
       id: product.id,
       name: product.name,
       sku: product.pricing[0].sku,
@@ -40,24 +37,19 @@ const ProductCard = ({ product }: ProductCardProps) => {
       price: product.pricing[0].price,
       quantity: 1,
     });
-    
-    checkPresenceInCart();
-  };
-
-  const checkPresenceInCart = () => {
-    cart.forEach((productInCart) => {
-      if (productInCart.sku === product.pricing[0].sku)
-        setQuantityInCart(productInCart.quantity);
-    });
   };
 
   useEffect(() => {
-    return () => {
-      if (product.pricing.length === 1) {
-        checkPresenceInCart();
-      }
-    };
-  }, [cart.length]);
+    if (product.pricing.length === 1) {
+      let quantityToSet = -1;
+      cart.forEach((productInCart) => {
+        if (productInCart.sku === product.pricing[0].sku)
+          quantityToSet = productInCart.quantity;
+      });
+      setQuantityInCart(quantityToSet);
+    }
+    return () => {};
+  }, [cart]);
 
   return (
     <article
@@ -78,7 +70,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         />
       </div>
       <header className="p-3 md:p-6">
-        <h3 className="cursor-pointer truncate text-xs text-base md:text-sm">
+        <h3 className="cursor-pointer truncate text-xs text-body md:text-sm">
           {product.name}
         </h3>
         <div className="mt-2 flex items-center justify-between">
@@ -88,13 +80,17 @@ const ProductCard = ({ product }: ProductCardProps) => {
             </span>
           </div>
 
-          {quantityInCart !== 0 ? (
+          {product.pricing.length === 1 && quantityInCart > 0 ? (
             <div
               onClick={(e) => e.stopPropagation()}
               className="flex overflow-hidden w-7 h-18 sm:w-20 sm:h-7 md:h-9 md:w-24 bg-accent flex-col-reverse sm:flex-row text-white rounded absolute sm:static bottom-3 ltr:right-3 rtl:left-3 sm:bottom-0 ltr:sm:right-0 rtl:sm:left-0"
             >
               <button
-                onClick={() => updateProductQuantityFromCart(product.id, -1)}
+                onClick={() =>
+                  quantityInCart === 1
+                    ? deleteProductFromCart(product.pricing[0].sku)
+                    : updateProductQuantityFromCart(product.pricing[0].sku, -1)
+                }
                 className="cursor-pointer p-2 transition-colors duration-200 text-white hover:bg-accentHover focus:outline-0"
               >
                 <span className="sr-only">minus</span>
@@ -111,13 +107,22 @@ const ProductCard = ({ product }: ProductCardProps) => {
                   ></path>
                 </svg>
               </button>
+
               <div className="flex flex-1 items-center justify-center px-3 text-sm font-semibold">
                 {quantityInCart}
               </div>
               <button
-                onClick={() => updateProductQuantityFromCart(product.id, 1)}
-                className="cursor-pointer p-2 transition-colors duration-200 hover:bg-accent-hover focus:outline-0"
-                title=""
+                disabled={
+                  product.pricing[0].stock > quantityInCart ? false : true
+                }
+                onClick={() => {
+                  updateProductQuantityFromCart(product.pricing[0].sku, +1);
+                }}
+                className={`${
+                  product.pricing[0].stock > quantityInCart
+                    ? "cursor-pointer transition-colors duration-200 hover:bg-accentHover"
+                    : "bg-gray-300 text-textColor cursor-not-allowed hover:bg-gray-300"
+                } p-2 focus:outline-0`}
               >
                 <span className="sr-only">plus</span>
                 <svg
@@ -159,6 +164,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         </div>
       </header>
       <ProductDetails
+        key={product.id}
         isOpen={isOpen}
         closeModal={() => setIsOpen(false)}
         product={product}
@@ -169,89 +175,5 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
 export default ProductCard;
 
-// "use client"
 
-// import { CarProps, ProductProps } from "@/types"
-// import Image from "next/image";
-// import { CustomButton, ProductDetails } from ".";
-// import { useState } from "react";
 
-// interface ProductCardProps {
-//    product: ProductProps
-// }
-
-// const ProductCard = ({product}: ProductCardProps) => {
-
-//    // const { city_mpg, year, make, model, transmission, drive } = product;
-//    const {
-//       id,
-//    model,
-//    price,
-//    category,
-//    type,
-//    color,
-//    variant,
-//    dimension,
-//    specialization,
-//    description,
-//    adjustable,
-//    images_path,
-//    } = product
-//          <ProductDetails isOpen={isOpen} closeModal={() => setIsOpen(false)} product={product} />
-
-//       <p className="flex mt-6 text-[32px] font-extrabold">
-//          <span className="self-start text-[14px] font-semibold" >
-//             ₹
-//          </span>
-//          {price}
-//          <span className="self-end text-[14px] font-medium">
-//             /count//          <ProductDetails isOpen={isOpen} closeModal={() => setIsOpen(false)} product={product} />
-
-//          </span>
-//       </p>
-
-//       <div className="relative w-full h-40 my-3 object-contain">
-//          <Image src={images_path[0]} alt="product model" fill priority className="object-contain" />
-//          {/* <Image src={`/data_center/images/${images_path[0]}`} alt="product model" fill priority className="object-contain" /> */}
-
-//       </div>
-//          <div className="relative flex w-full mt-2">
-//             <div className="flex group-hover:invisibility w-full justify-between text-gray">
-//                <div className="flex flex-col justify-center items-center gap-2">
-//                   <Image src="/category.svg" width={20} height={20} alt="gas" />
-//                   <p className="text-[14px] capitalize">
-//                      {category}
-//                   </p>
-//                </div>
-//                <div className="flex flex-col justify-center items-center gap-2">
-//                   <Image src="/color.svg" width={20} height={20} alt="tire" />
-//                   <p className="text-[14px] capitalize">
-//                      {color}
-//                   </p>
-//                </div>
-//                <div className="flex flex-col justify-center items-center gap-2">
-//                   <Image src="/adjustable.svg" width={20} height={20} alt="steering wheel" />
-//                   <p className="text-[14px] capitalize">
-//                      {adjustable ? "Adjustable" : "Fix size"}
-//                   </p>
-//                </div>
-//             </div>
-
-//             <div className="hidden group-hover:flex absolute bottom-0 w-full z-10">
-//                <CustomButton
-//                   title="View More"
-//                   containerStyles="w-full py-[16px] rounded-full bg-primary-blue"
-//                   textStyles="text-white text-[14px] leading-[17px] font-bold"
-//                   rightIcon="/right-arrow.svg"
-//                   handleClick={() => {setIsOpen(true)}}
-//                   />
-//             </div>
-//          </div>
-
-//          <ProductDetails isOpen={isOpen} closeModal={() => setIsOpen(false)} product={product} />
-
-//     </div>
-//   )
-// }
-
-// export default ProductCard

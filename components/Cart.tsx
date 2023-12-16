@@ -10,7 +10,11 @@ const Cart = () => {
   return (
     <>
       <CartButton setCartSideBar={setCartSideBar} />
-      <CartSideBar cartSideBar={cartSideBar} setCartSideBar={setCartSideBar} />
+      {
+        cartSideBar ? 
+        <CartSideBar cartSideBar={cartSideBar} setCartSideBar={setCartSideBar} />
+        : ''
+      }
     </>
   )
 }

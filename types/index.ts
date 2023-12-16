@@ -36,39 +36,31 @@ export interface ProductProps {
   rating: number;
 }
 
-
 export interface userType {
-   id: string;
-   name: string;
-   userName: string;
-   cart: CartProductType[];
-   cartItemsCount: number;
-   cartItemsTotalPrice: number;
+  id: string;
+  name: string;
+  userName: string;
+  cart: CartProductType[];
+  //  cartItemsCount: number;
+  //  cartItemsTotalPrice: number;
 }
 
 export interface CartProductType {
-  id: string,
-  name: string,
-  sku: string,
-  color: string,
-  size: string,
-  price: number,
-  quantity: number
+  id: string;
+  name: string;
+  sku: string;
+  color: string;
+  size: string;
+  price: number;
+  quantity: number;
 }
-
 
 export interface CustomButtonProps {
   title: string;
   containerStyles?: string;
-  handleClick?: MouseEventHandler<HTMLButtonElement>
+  handleClick?: MouseEventHandler<HTMLButtonElement>;
   btnType?: "button" | "submit";
   textStyles?: string;
   rightIcon?: string;
   isDisabled?: boolean;
 }
-
-
-
-
-
-

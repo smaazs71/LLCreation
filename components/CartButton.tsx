@@ -2,20 +2,21 @@ import { useGlobal } from "@/context/GlobalState";
 import React, { Dispatch, SetStateAction } from "react";
 
 interface CartButtonProps {
-  setCartSideBar: Dispatch<SetStateAction <boolean> >;
+  setCartSideBar: Dispatch<SetStateAction<boolean>>;
 }
 
-const CartButton = ({setCartSideBar}: CartButtonProps ) => {
-
+const CartButton = ({ setCartSideBar }: CartButtonProps) => {
 
   const {
-    user: { cartItemsCount, cartItemsTotalPrice },
+    user: { cart },
+    getTotalAmount,
   } = useGlobal();
 
   return (
     <button
       onClick={() => setCartSideBar(true)}
-      className="product-cart fixed top-1/2 z-40 -mt-12 hidden flex-col items-center justify-center rounded bg-accent p-3 pt-3.5 text-sm font-semibold text-white shadow-900 transition-colors duration-200 hover:bg-accentHover focus:outline-0 right-0 rounded-tr-none rounded-br-none rtl:left-0 rtl:rounded-tl-none rtl:rounded-bl-none lg:flex">
+      className="product-cart fixed top-1/2 z-40 -mt-12 hidden flex-col items-center justify-center rounded bg-accent p-3 pt-3.5 text-sm font-semibold text-white shadow-900 transition-colors duration-200 hover:bg-accentHover focus:outline-0 right-0 rounded-tr-none rounded-br-none rtl:left-0 rtl:rounded-tl-none rtl:rounded-bl-none lg:flex"
+    >
       <span className="flex pb-0.5">
         <svg
           width="14"
@@ -44,10 +45,10 @@ const CartButton = ({setCartSideBar}: CartButtonProps ) => {
             </g>
           </g>
         </svg>
-        <span className="flex ml-2 rtl:mr-2">{cartItemsCount} Items</span>
+        <span className="flex ml-2 rtl:mr-2">{cart.length} Items</span>
       </span>
       <span className="mt-3 w-full rounded bg-white px-2 py-2 text-accent">
-        ${cartItemsTotalPrice}.00
+        ${getTotalAmount().toString()}.00
       </span>
     </button>
   );

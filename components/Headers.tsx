@@ -33,7 +33,8 @@ const Headers = () => {
       ref={header}
       id="header"
       className={`${
-        typeof window !== "undefined" && window.scrollY > HEADER_WHITE_SCROLL_PX ? "bg-white shadow-sm" : ""
+        // typeof window !== "undefined" &&
+         window.scrollY > HEADER_WHITE_SCROLL_PX ? "bg-white shadow-sm" : ""
       } header fixed  t-0 w-screen p-6 hidden md:block z-40`}
     >
       <div className="flex items-center justify-between">
