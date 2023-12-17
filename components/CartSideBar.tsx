@@ -25,12 +25,12 @@ const CartSideBar = ({ cartSideBar, setCartSideBar }: CartSideBarProps) => {
 
           <Transition.Child
             as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
+            enter="ease-in duration-500"
+            enterFrom="-me-[28rem]"
+            enterTo="-me-0"
+            leave="ease-out duration-500"
+            leaveFrom="-me-0"
+            leaveTo="-me-[28rem]"
           >
             <Dialog
               as="div"
@@ -173,7 +173,9 @@ const CartSideBar = ({ cartSideBar, setCartSideBar }: CartSideBarProps) => {
                         <p className="my-2.5 font-semibold text-accent">
                           ${product.price}
                         </p>
-                        <span className="text-xs text-body">9 X 1 Stk</span>
+                        <span className="text-xs text-body">
+                          {product.quantity} X 1 pc(s)
+                        </span>
                       </div>
                       <span className="font-bold text-heading ltr:ml-auto rtl:mr-auto">
                         ${product.price * product.quantity}
