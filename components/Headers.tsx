@@ -11,8 +11,8 @@ const Headers = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (header.current) {
-        if (window.scrollY > HEADER_WHITE_SCROLL_PX) {
+      if (header.current && globalThis) {
+        if (globalThis.scrollY > HEADER_WHITE_SCROLL_PX) {
           // document.getElementById('header').classList.add()
           header.current.classList.add("bg-white");
           header.current.classList.add("shadow-sm");
@@ -22,9 +22,9 @@ const Headers = () => {
         }
       }
     };
-    window.addEventListener("scroll", handleScroll);
+    globalThis.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      globalThis.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -33,8 +33,8 @@ const Headers = () => {
       ref={header}
       id="header"
       className={`${
-        // typeof window !== "undefined" &&
-         window.scrollY > HEADER_WHITE_SCROLL_PX ? "bg-white shadow-sm" : ""
+        // window !== "undefined" &&
+        globalThis.scrollY > HEADER_WHITE_SCROLL_PX ? "bg-white shadow-sm" : ""
       } header fixed  t-0 w-screen p-6 hidden md:block z-40`}
     >
       <div className="flex items-center justify-between">
