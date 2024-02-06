@@ -9,7 +9,7 @@ const CartButton = ({ setCartSideBar }: CartButtonProps) => {
 
   const {
     user: { cart },
-    getTotalAmount,
+    getCartTotalAmount,
   } = useGlobal();
 
   return (
@@ -48,7 +48,7 @@ const CartButton = ({ setCartSideBar }: CartButtonProps) => {
         <span className="flex ml-2 rtl:mr-2">{cart.length} Items</span>
       </span>
       <span className="mt-3 w-full rounded bg-white px-2 py-2 text-accent">
-        ${getTotalAmount().toString()}.00
+        ${getCartTotalAmount().toString()}.00
       </span>
     </button>
   );

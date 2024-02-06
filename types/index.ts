@@ -1,66 +1,14 @@
-import { MouseEventHandler } from "react";
+export type { userType, CartProductType, AddressProps } from "./user";
 
-export interface OptionProps {
-  title: string;
-  value: string;
-}
+export type { GlobalContextType } from "./context";
 
-export interface CustomFilterProps {
-  title: string;
-  options: OptionProps[];
-}
+export type {
+  CustomButtonProps,
+  ShowMoreProps,
+  CustomFilterProps,
+  OptionProps,
+} from "./component";
 
-export interface ShowMoreProps {
-  pageNumber: number;
-  isNext: boolean;
-}
+export type { ProductProps } from "./product";
 
-export interface ProductProps {
-  id: string;
-  name: string;
-  price: string;
-  category: string;
-  sub_category?: string;
-  colors: string[];
-  sizes: string[];
-  pricing: {
-    sku: string;
-    size: string;
-    color: string;
-    price: number;
-    stock: number;
-  }[];
-  description: string;
-  images_path: string[];
-  key_words: string;
-  rating: number;
-}
-
-export interface userType {
-  id: string;
-  name: string;
-  userName: string;
-  cart: CartProductType[];
-  //  cartItemsCount: number;
-  //  cartItemsTotalPrice: number;
-}
-
-export interface CartProductType {
-  id: string;
-  name: string;
-  sku: string;
-  color: string;
-  size: string;
-  price: number;
-  quantity: number;
-}
-
-export interface CustomButtonProps {
-  title: string;
-  containerStyles?: string;
-  handleClick?: MouseEventHandler<HTMLButtonElement>;
-  btnType?: "button" | "submit";
-  textStyles?: string;
-  rightIcon?: string;
-  isDisabled?: boolean;
-}
+export type { BillType } from "./bill";

@@ -1,7 +1,12 @@
 "use client";
 import { ReactNode, createContext, useContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
-import { CartProductType, userType } from "@/types";
+import {
+  AddressProps,
+  CartProductType,
+  GlobalContextType,
+  userType,
+} from "@/types";
 
 // Initial State
 const initialState: GlobalContextType = {
@@ -65,30 +70,38 @@ const initialState: GlobalContextType = {
         quantity: 13,
       },
     ],
+    addresses: [
+      {
+        title: "honme",
+        line1: "string",
+        city: "string",
+        pinCode: "string",
+        state: "string",
+        country: "string",
+      },
+      {
+        title: "office",
+        line1: "string",
+        city: "string",
+        pinCode: "string",
+        state: "string",
+        country: "string",
+      },
+    ],
     // cartItemsCount: 0,
     // cartItemsTotalPrice: 0,
   },
-  getTotalAmount: () => 0,
+
+  addAddress: ({ title, line1, city, pinCode, state, country }) => {},
+  updateAddress: ({ title, line1, city, pinCode, state, country }, index) => {},
+
+  getCartTotalAmount: () => 0,
   addProductInCart: ({ id, name, sku, color, size, price, quantity }) => {},
   updateProductInCart: (sku, key, value) => {},
   updateProductDetailsInCart: (sku, payload) => {},
   deleteProductFromCart: (sku) => {},
   updateProductQuantityFromCart: (sku, count) => {},
 };
-
-interface GlobalContextType {
-  user: userType;
-  getTotalAmount: () => number;
-  addProductInCart: (payload: CartProductType) => void;
-  updateProductInCart: (
-    sku: string,
-    key: string,
-    value: string | number
-  ) => void;
-  updateProductDetailsInCart: (sku: string, payload: object) => void;
-  updateProductQuantityFromCart: (sku: string, count: number) => void;
-  deleteProductFromCart: (sku: string) => void;
-}
 
 export const GlobalContext = createContext<GlobalContextType>(initialState);
 
@@ -104,11 +117,28 @@ export const GlobalProvider = ({ children }: Props) => {
   const [user, dispatch] = useReducer(AppReducer, initialState.user);
 
   //Actions
-  function getTotalAmount() {
-    // console.log("getTotalAmount");
 
+  // Address Functions
+  function addAddress(address: AddressProps) {
+    dispatch({
+      type: "ADD_ADDRESS",
+      address,
+    });
+  }
+
+  function updateAddress(address: AddressProps, index: number) {
+    dispatch({
+      type: "UPDATE_ADDRESS",
+      address,
+      index,
+    });
+  }
+
+  // Cart functions
+  function getCartTotalAmount() {
     return user.cart.reduce(
-      (partialSum, product) => partialSum + product.price * product.quantity,
+      (partialSum: number, product: CartProductType) =>
+        partialSum + product.price * product.quantity,
       0
     );
     // user.cart.forEach((product) => {
@@ -164,7 +194,11 @@ export const GlobalProvider = ({ children }: Props) => {
 
   const value = {
     user,
-    getTotalAmount,
+
+    addAddress,
+    updateAddress,
+
+    getCartTotalAmount,
     addProductInCart,
     updateProductDetailsInCart,
     updateProductInCart,

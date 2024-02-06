@@ -1,4 +1,4 @@
-import { CartProductType, userType } from "@/types";
+import { AddressProps, CartProductType, userType } from "@/types";
 
 export interface appReducerActionType {
   type: string;
@@ -9,10 +9,27 @@ export interface appReducerActionType {
   count?: number;
   key?: string;
   value?: string | number;
+  address?: AddressProps;
+  index?: number;
 }
 
 export default (state: userType, action: appReducerActionType) => {
   switch (action.type) {
+    case "ADD_ADDRESS":
+      return {
+        ...state,
+        addresses: action.address
+          ? [...state.addresses, action.address]
+          : [...state.addresses],
+      };
+    case "UPDATE_ADDRESS":
+      return {
+        ...state,
+        addresses: state.addresses.map((address, i) =>
+        action.address && i === action.index ? action.address : address
+        ),
+      };
+
     case "ADD_PRODUCT_IN_CART":
       return {
         ...state,
@@ -49,7 +66,9 @@ export default (state: userType, action: appReducerActionType) => {
       return {
         ...state,
         cart: state.cart.map((product) =>
-          product.sku === action.sku ? { ...product, ...action.payload } : product
+          product.sku === action.sku
+            ? { ...product, ...action.payload }
+            : product
         ),
       };
 

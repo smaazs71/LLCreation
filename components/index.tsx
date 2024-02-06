@@ -12,6 +12,13 @@ import ShowMore from "./ShowMore";
 import CartSideBar from "./CartSideBar";
 import CartButton from "./CartButton";
 import Cart from "./Cart";
+import CartSideBarHeader from "./CartSideBarHeader";
+import SideBarCartItem from "./SideBarCartItem";
+import EditAddress from "./EditAddress";
+
+import DeliveryDetailsSection from "./checkout/DeliveryDetailsSection";
+import CartDetailsSection from "./checkout/CartDetailsSection";
+import PaymentSection from "./checkout/PaymentSection";
 
 export {
    Hero,
@@ -28,6 +35,12 @@ export {
    CartButton,
    CartSideBar,
    Cart,
+   CartSideBarHeader,
+   SideBarCartItem,
+   EditAddress,
 
+   DeliveryDetailsSection,
+   CartDetailsSection,
+   PaymentSection,
 
 }
